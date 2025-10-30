@@ -1,0 +1,241 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+/* Estilização do Header */
+.main-header {
+    background-color: #007B8C; /* Azul/Ciano da Superlight como fundo */
+    color: #ffffff;
+    padding: 15px 20px;
+    display: flex; /* Para alinhar a logo e o texto lado a lado */
+    align-items: center; /* Alinhamento vertical */
+    justify-content: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+/* Estilização da Logo */
+.logo {
+    height: 40px; /* Tamanho da logo */
+    margin-right: 20px;
+}
+
+/* Estilização do Título (opcional) */
+.main-header h1 {
+    font-size: 1.5em;
+    font-weight: 600;
+    margin: 0;
+    /* Opcional: Destacar com a cor Laranja */
+    color: #ffffff; 
+}
+
+.map-container {
+    position: relative; /* Essencial para posicionar o popover */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+/* Estilo Base para o Mapa SVG */
+#mapa-svg {
+    width: 90%; /* Ajuste para o tamanho desejado */
+    max-width: 800px;
+    height: auto;
+    stroke: #ffffff; /* Cor da borda entre estados */
+    stroke-width: 1px;
+}
+
+/* Estilo para cada estado (path) */
+#mapa-svg path {
+    fill: #007c8c2f; /* Cor padrão dos estados */
+    transition: fill 0.2s ease;
+    cursor: pointer;
+}
+
+/* Destaque ao passar o mouse */
+#mapa-svg path:hover {
+    fill: #FF6600; /* Azul para destaque */
+    opacity: 0.8;
+}
+
+/* ==================================== */
+/* 🎨 ESTILIZAÇÃO DO POPOVER MODERNO */
+/* ==================================== */
+
+#popover {
+    /* Estado inicial: oculto e posicionado de forma fixa */
+    display: none; 
+    position: fixed; 
+    pointer-events: none; /* Permite clicar/interagir com o elemento abaixo */
+    z-index: 1000;
+    
+    /* Novo Visual */
+    background-color: #ffffff; /* Fundo branco e limpo */
+    border: none; /* Remove a borda simples */
+    border-radius: 8px; /* Bordas arredondadas suaves */
+    padding: 15px 20px; /* Preenchimento interno */
+    max-width: 280px; /* Limita a largura para melhor leitura */
+    min-width: 200px;
+    
+    /* Sombra para efeito "flutuante" (Moderno!) */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15); 
+    
+    /* Transição suave para aparecer/desaparecer */
+    transition: opacity 0.2s ease-out; 
+}
+
+/* Título (Estado) dentro do Popover */
+#popover h4 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: #007B8C; /* Cor principal da sua marca */
+    font-size: 1.1em;
+    font-weight: bold;
+    border-bottom: 2px solid #e0e0e0; /* Linha de separação */
+    padding-bottom: 5px;
+}
+
+/* Lista de Transportadoras/Dados */
+#popover ul {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 0;
+}
+
+/* Cada Item da Lista (Transportadora) */
+#popover li {
+    font-size: 0.95em;
+    margin-top: 8px;
+    line-height: 1.4;
+    color: #333; /* Cor do texto mais escura */
+}
+
+/* Destaque para as informações-chave (Opcional: se você usar <strong>) */
+#popover li strong {
+    color: #FF6600; /* Azul de destaque */
+    font-weight: 600;
+}
+
+/* ==================================== */
+/* 📱 MEDIA QUERIES (OTIMIZAÇÃO MOBILE) */
+/* ==================================== */
+
+@media (max-width: 768px) {
+    /* 1. Ajuste do Container do Mapa */
+    .map-container {
+        /* Garante que o container use a largura máxima da tela */
+        width: 100%;
+        padding: 10px;
+        box-sizing: border-box; 
+    }
+
+    /* 2. Redução do Mapa SVG */
+    #mapa-svg {
+        /* Permite que o mapa SVG se ajuste à largura do seu container */
+        max-width: 100%;
+        height: auto; 
+    }
+    
+    /* 3. Ajuste do Header (Opcional, se o título for longo) */
+    .main-header h1 {
+        font-size: 1.2em; /* Reduz o tamanho do título */
+    }
+    
+    /* 4. Ajuste da Logo */
+    .logo {
+        height: 30px; /* Reduz o tamanho da logo */
+    }
+
+    /* 1. Ajuste da Fonte Base (Reduz o tamanho padrão) */
+    body {
+        font-size: 14px; /* Reduz o tamanho base de 16px (padrão) para 14px */
+    }
+
+    /* 2. Ajuste do Header */
+    .main-header h1 {
+        font-size: 1.2em; /* Mantém este ajuste, se já o fez */
+    }
+    
+    /* 3. Ajuste do Popover (para garantir que os elementos internos se ajustem) */
+    #popover h4 {
+        font-size: 1em; /* Título do popover */
+        margin-bottom: 5px;
+    }
+    
+    #popover li {
+        font-size: 0.85em; /* Itens da lista do popover (Transportadora/Prazo) */
+    }
+
+    /* 4. Ajuste de Elementos Gerais (Se existirem outros textos) */
+    p, a {
+        font-size: 0.9em; /* Reduz textos de parágrafo e links, se existirem */
+    }
+}
+
+@media (max-width: 768px) {
+    /* ... (continuação do código acima) ... */
+    
+    /* 5. Estilo do Popover para Mobile */
+    #popover {
+        /* Reposiciona o popover no centro inferior da tela */
+        position: fixed; 
+        left: 50% !important; /* Centraliza horizontalmente */
+        bottom: 10px; /* Fica fixo no fundo */
+        top: auto !important; /* Desabilita a posição 'top' do JavaScript */
+        
+        transform: translateX(-50%); /* Ajuste de 50% para centralizar */
+        
+        max-width: 90%; /* Limita a largura a 90% da tela */
+        min-width: 280px;
+        padding: 12px 15px; /* Reduz o padding */
+        
+        /* Prioriza a cor de destaque (Laranja) */
+        border: 2px solid #FF6600; 
+    }
+    
+    /* 6. Ajuste do Texto do Popover */
+    #popover h4 {
+        font-size: 1em;
+        margin-bottom: 5px;
+    }
+    
+    #popover li {
+        font-size: 0.85em; /* Reduz um pouco o tamanho do texto */
+    }
+}
+
+/* ==================================== */
+/* 🦶 ESTILIZAÇÃO E CENTRALIZAÇÃO DO FOOTER */
+/* ==================================== */
+
+footer {
+    /* Cor de fundo: O azul/ciano da Superlight */
+    background-color: #007B8C; 
+    
+    /* Cor do texto: Branco para contraste */
+    color: #ffffff; 
+    
+    padding: 15px 10px;
+    
+    /* O mais importante: Centraliza todo o texto */
+    text-align: center; 
+    
+    /* Garante que o footer fique na parte inferior */
+    width: 100%;
+    margin-top: 30px; /* Dá um pequeno espaço entre o mapa e o footer */
+}
+
+footer p {
+    /* Remove margens padrão para evitar espaçamentos indesejados */
+    margin: 5px 0; 
+    font-size: 0.8em;
+}
+
+/* Opcional: Destacar o nome da IA com a cor laranja */
+footer p:last-child {
+    color: #ffffff; 
+    font-weight: 600;
+}
