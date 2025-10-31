@@ -49,7 +49,6 @@ function mostrarPopover(e, uf) {
             // AQUI É ONDE USAMOS O <strong> PARA O NOVO DESIGN:
             html += `<li> 
                         Transportadora: <strong>${t.Transportadora}</strong><br>
-                        Serviço: ${t.Tipo_Servico} | Prazo: <strong>${t.Prazo_dias} dias</strong>
                     </li>`;
         });
         html += '</ul>';
@@ -86,4 +85,5 @@ function esconderPopover() {
 
 // Inicia o processo
 carregarDados();
+
 
